@@ -1,9 +1,30 @@
 ﻿@page "/"
+@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
 
-<PageTitle>Index</PageTitle>
+<link href="css/site.css" rel="stylesheet" />
+<form method="post" @onsubmit="Connect" formname="starship_plain_form">
 
-<h1>Hello, world!</h1>
+    <div>
+        <h1>Welcome To X</h1>
+        <h3>Enter Your Pin Code To Access Your Bank Account</h3>
+        <input @bind="Pin" type="password" name="pin" placeholder="****" maxlength="4" pattern="\d{4}" required />
+    </div>
+    <button type="submit">Submit</button>
+</form>
 
-Welcome to your new app.
+@code {
+    private string Pin { get; set; }
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+    private void Connect()
+    {
+        // Access Pin here
+        string message = $"Entered Pin: {Pin}";
+
+        // Or use a logger if you have it
+        // Logger.LogInformation("Entered Pin: {Pin}", Pin);
+
+        // Redirect to the homepage with the PIN as a query parameter
+        NavigationManager.NavigateTo($"/home?pin={Pin}");
+    }
+}

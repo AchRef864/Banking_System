@@ -1,0 +1,51 @@
+﻿@page "/home"
+@inject NavigationManager NavigationManager
+
+<link href="css/site.css" rel="stylesheet" />
+
+<div>
+    <button @onclick="DisConnect">Disconnect</button>
+    <p>Entered PIN: @Pin</p>
+    <h2>Welcome Back</h2>
+    <h3>Your Current Amount Is: @Amount TND </h3>
+    <button @onclick="WithDraw">WithDraw</button>
+    <button @onclick="Deposit">Deposit</button>
+</div>
+
+@code {
+    private string Pin { get; set; }
+    private int Amount = 250;
+
+    protected override void OnInitialized()
+    {
+        // Get the PIN from the query parameters
+        string uri = NavigationManager.Uri;
+
+        if (Uri.TryCreate(uri, UriKind.Absolute, out Uri absoluteUri))
+        {
+            string pin = absoluteUri.Query.TrimStart('?')
+                               .Split('&')
+                               .FirstOrDefault(param => param.StartsWith("pin=", StringComparison.OrdinalIgnoreCase));
+
+            if (pin != null)
+            {
+                Pin = pin.Substring(4);
+            }
+        }
+    }
+
+    private void WithDraw()
+    {
+        this.Amount -= 10;
+    }
+
+    private void Deposit()
+    {
+        this.Amount += 10;
+    }
+
+    private void DisConnect()
+    {
+        NavigationManager.NavigateTo("/");
+    }
+}
