@@ -1,30 +1,49 @@
 ﻿@page "/"
 @inject IJSRuntime JSRuntime
 @inject NavigationManager NavigationManager
+@using BankService
 
 <link href="css/site.css" rel="stylesheet" />
 <form method="post" @onsubmit="Connect" formname="starship_plain_form">
 
-    <div>
-        <h1>Welcome To X</h1>
-        <h3>Enter Your Pin Code To Access Your Bank Account</h3>
-        <input @bind="Pin" type="password" name="pin" placeholder="****" maxlength="4" pattern="\d{4}" required />
-    </div>
-    <button type="submit">Submit</button>
+	<div>
+		<h1>Welcome To X</h1>
+		<h3>Enter Your Pin Code To Access Your Bank Account</h3>
+		<input @bind="Pin" type="password" name="pin" placeholder="****" maxlength="4" pattern="\d{4}" required />
+	</div>
+	<button type="submit">Submit</button>
 </form>
 
 @code {
-    private string Pin { get; set; }
+	private string Pin { get; set; }
+	private banque_serviceClient _bankServiceClient;
+	private double convertedAmount;
 
-    private void Connect()
-    {
-        // Access Pin here
-        string message = $"Entered Pin: {Pin}";
+	protected override async Task OnInitializedAsync()
+	{
+		_bankServiceClient = new banque_serviceClient();
+	}
 
-        // Or use a logger if you have it
-        // Logger.LogInformation("Entered Pin: {Pin}", Pin);
+	private async Task Connect()
+	{
+		try
+		{
+			// Access Pin here
+			string message = $"Entered Pin: {Pin}";
 
-        // Redirect to the homepage with the PIN as a query parameter
-        NavigationManager.NavigateTo($"/home?pin={Pin}");
-    }
+			// Call the web service method with a valid double amount
+			//await _bankServiceClient.ConvertEuroToDinarAsync(m); // Example amount
+			var response = await _bankServiceClient.GetAccountAsync(Pin);
+
+			// Use the converted amount
+			// ...
+
+			NavigationManager.NavigateTo($"/home?pin={Pin}");
+		}
+		catch (Exception ex)
+		{
+			// Handle errors gracefully
+			// Display an error message to the user
+		}
+	}
 }
