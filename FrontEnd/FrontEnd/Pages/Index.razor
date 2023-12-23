@@ -4,46 +4,62 @@
 @using BankService
 
 <link href="css/site.css" rel="stylesheet" />
-<form method="post" @onsubmit="Connect" formname="starship_plain_form">
 
-	<div>
-		<h1>Welcome To X</h1>
-		<h3>Enter Your Pin Code To Access Your Bank Account</h3>
-		<input @bind="Pin" type="password" name="pin" placeholder="****" maxlength="4" pattern="\d{4}" required />
-	</div>
-	<button type="submit">Submit</button>
+<form method="post" @onsubmit="Connect" formname="starship_plain_form">
+    <div>
+        <h1>Welcome To X</h1>
+        <h3>Enter Your Pin Code To Access Your Bank Account</h3>
+        <input @bind="Pin" type="password" name="pin" placeholder="****" maxlength="4" pattern="\d{4}" required />
+    </div>
+    <button type="submit">Submit</button>
 </form>
 
 @code {
-	private string Pin { get; set; }
-	private banque_serviceClient _bankServiceClient;
-	private double convertedAmount;
+    private string Pin { get; set; }
+    private banque_serviceClient _bankServiceClient;
+    private Boolean exist;
+    private string EncryptionKey = "MyEncryptionKey123";
 
-	protected override async Task OnInitializedAsync()
-	{
-		_bankServiceClient = new banque_serviceClient();
-	}
+    protected override async Task OnInitializedAsync()
+    {
+        _bankServiceClient = new banque_serviceClient();
+    }
 
-	private async Task Connect()
-	{
-		try
-		{
-			// Access Pin here
-			string message = $"Entered Pin: {Pin}";
+    private async Task Connect()
+    {
+        try
+        {
+            // Access Pin here
+            var response2 = await _bankServiceClient.AccountExistsAsync(Pin);
+            exist = response2.@return;
+            var response1 = await _bankServiceClient.EncryptStringAsync(Pin, EncryptionKey);
+            Pin = response1.@return;
 
-			// Call the web service method with a valid double amount
-			//await _bankServiceClient.ConvertEuroToDinarAsync(m); // Example amount
-			var response = await _bankServiceClient.GetAccountAsync(Pin);
+            if (exist)
+            {
+                // Account exists, navigate to home
+                NavigationManager.NavigateTo($"/home?pin={Pin}");
+            }
+            else
+            {
+                // Account does not exist, show confirmation dialog
+                bool createAccount = await JSRuntime.InvokeAsync<bool>("confirm", "Account doesn't exist. Do you want to open a new account?");
 
-			// Use the converted amount
-			// ...
+                if (createAccount)
+                {
+                    // Navigate to create account page
+                    NavigationManager.NavigateTo("/create");
+                }
+                // Otherwise, do nothing
+            }
 
-			NavigationManager.NavigateTo($"/home?pin={Pin}");
-		}
-		catch (Exception ex)
-		{
-			// Handle errors gracefully
-			// Display an error message to the user
-		}
-	}
+            // Clear the password input
+            Pin = "";
+        }
+        catch (Exception ex)
+        {
+            // Handle errors gracefully
+            // Display an error message to the user
+        }
+    }
 }

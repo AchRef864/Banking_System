@@ -11,165 +11,229 @@ namespace BankService
 {
     
     
+    /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
-    [System.ServiceModel.ServiceContractAttribute(Namespace="http://service/", ConfigurationName="BankService.banque_service")]
-    public interface banque_service
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service/")]
+    public partial class SQLException
     {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://service/banque_service/CreateAccountRequest", ReplyAction="http://service/banque_service/CreateAccountResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<BankService.CreateAccountResponse> CreateAccountAsync(BankService.CreateAccountRequest request);
+        private string sQLStateField;
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://service/banque_service/UpdateAccountRequest", ReplyAction="http://service/banque_service/UpdateAccountResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<BankService.UpdateAccountResponse> UpdateAccountAsync(BankService.UpdateAccountRequest request);
+        private int errorCodeField;
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://service/banque_service/VerserMontantRequest", ReplyAction="http://service/banque_service/VerserMontantResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<BankService.VerserMontantResponse> VerserMontantAsync(BankService.VerserMontantRequest request);
+        private string messageField;
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://service/banque_service/RetirerMontantRequest", ReplyAction="http://service/banque_service/RetirerMontantResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<BankService.RetirerMontantResponse> RetirerMontantAsync(BankService.RetirerMontantRequest request);
+        private sqlException nextExceptionField;
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://service/banque_service/GetAccountRequest", ReplyAction="http://service/banque_service/GetAccountResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<BankService.GetAccountResponse> GetAccountAsync(BankService.GetAccountRequest request);
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public string SQLState
+        {
+            get
+            {
+                return this.sQLStateField;
+            }
+            set
+            {
+                this.sQLStateField = value;
+            }
+        }
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://service/banque_service/DeleteAccountRequest", ReplyAction="http://service/banque_service/DeleteAccountResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<BankService.DeleteAccountResponse> DeleteAccountAsync(BankService.DeleteAccountRequest request);
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public int errorCode
+        {
+            get
+            {
+                return this.errorCodeField;
+            }
+            set
+            {
+                this.errorCodeField = value;
+            }
+        }
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://service/banque_service/ConvertEuroToDinarRequest", ReplyAction="http://service/banque_service/ConvertEuroToDinarResponse")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        System.Threading.Tasks.Task<BankService.ConvertEuroToDinarResponse> ConvertEuroToDinarAsync(BankService.ConvertEuroToDinarRequest request);
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
+        public string message
+        {
+            get
+            {
+                return this.messageField;
+            }
+            set
+            {
+                this.messageField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=3)]
+        public sqlException nextException
+        {
+            get
+            {
+                return this.nextExceptionField;
+            }
+            set
+            {
+                this.nextExceptionField = value;
+            }
+        }
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service/")]
-    public partial class compte
+    public partial class sqlException : exception
     {
         
-        private string codeField;
-        
-        private System.DateTime dateCreationField;
-        
-        private bool dateCreationFieldSpecified;
-        
-        private float soldeField;
-        
-        private bool soldeFieldSpecified;
+        private sqlException nextExceptionField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
-        public string code
+        public sqlException nextException
         {
             get
             {
-                return this.codeField;
+                return this.nextExceptionField;
             }
             set
             {
-                this.codeField = value;
+                this.nextExceptionField = value;
             }
         }
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(sqlException))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service/")]
+    public partial class exception : throwable
+    {
+    }
+    
+    /// <remarks/>
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(exception))]
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(sqlException))]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service/")]
+    public partial class throwable
+    {
+        
+        private stackTraceElement[] stackTraceField;
         
         /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
-        public System.DateTime dateCreation
+        [System.Xml.Serialization.XmlElementAttribute("stackTrace", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=true, Order=0)]
+        public stackTraceElement[] stackTrace
         {
             get
             {
-                return this.dateCreationField;
+                return this.stackTraceField;
             }
             set
             {
-                this.dateCreationField = value;
+                this.stackTraceField = value;
             }
         }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service/")]
+    public partial class stackTraceElement
+    {
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="http://service/", ConfigurationName="BankService.banque_service")]
+    public interface banque_service
+    {
         
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool dateCreationSpecified
+        [System.ServiceModel.OperationContractAttribute(Action="http://service/banque_service/ConvertEuroToDinarRequest", ReplyAction="http://service/banque_service/ConvertEuroToDinarResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<BankService.ConvertEuroToDinarResponse> ConvertEuroToDinarAsync(BankService.ConvertEuroToDinarRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service/banque_service/UpdateAccountRequest", ReplyAction="http://service/banque_service/UpdateAccountResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<BankService.UpdateAccountResponse> UpdateAccountAsync(BankService.UpdateAccountRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service/banque_service/CreateAccountRequest", ReplyAction="http://service/banque_service/CreateAccountResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<BankService.CreateAccountResponse> CreateAccountAsync(BankService.CreateAccountRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service/banque_service/DecryptStringRequest", ReplyAction="http://service/banque_service/DecryptStringResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<BankService.DecryptStringResponse> DecryptStringAsync(BankService.DecryptStringRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service/banque_service/RetirerMontantRequest", ReplyAction="http://service/banque_service/RetirerMontantResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<BankService.RetirerMontantResponse> RetirerMontantAsync(BankService.RetirerMontantRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service/banque_service/AccountExistsRequest", ReplyAction="http://service/banque_service/AccountExistsResponse")]
+        [System.ServiceModel.FaultContractAttribute(typeof(BankService.SQLException), Action="http://service/banque_service/AccountExists/Fault/SQLException", Name="SQLException")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<BankService.AccountExistsResponse> AccountExistsAsync(BankService.AccountExistsRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service/banque_service/DeleteAccountRequest", ReplyAction="http://service/banque_service/DeleteAccountResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<BankService.DeleteAccountResponse> DeleteAccountAsync(BankService.DeleteAccountRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service/banque_service/GetAccountRequest", ReplyAction="http://service/banque_service/GetAccountResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<BankService.GetAccountResponse> GetAccountAsync(BankService.GetAccountRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service/banque_service/EncryptStringRequest", ReplyAction="http://service/banque_service/EncryptStringResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<BankService.EncryptStringResponse> EncryptStringAsync(BankService.EncryptStringRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://service/banque_service/VerserMontantRequest", ReplyAction="http://service/banque_service/VerserMontantResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        System.Threading.Tasks.Task<BankService.VerserMontantResponse> VerserMontantAsync(BankService.VerserMontantRequest request);
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ConvertEuroToDinar", WrapperNamespace="http://service/", IsWrapped=true)]
+    public partial class ConvertEuroToDinarRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public double montant;
+        
+        public ConvertEuroToDinarRequest()
         {
-            get
-            {
-                return this.dateCreationFieldSpecified;
-            }
-            set
-            {
-                this.dateCreationFieldSpecified = value;
-            }
         }
         
-        /// <remarks/>
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=2)]
-        public float solde
+        public ConvertEuroToDinarRequest(double montant)
         {
-            get
-            {
-                return this.soldeField;
-            }
-            set
-            {
-                this.soldeField = value;
-            }
-        }
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlIgnoreAttribute()]
-        public bool soldeSpecified
-        {
-            get
-            {
-                return this.soldeFieldSpecified;
-            }
-            set
-            {
-                this.soldeFieldSpecified = value;
-            }
+            this.montant = montant;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="CreateAccount", WrapperNamespace="http://service/", IsWrapped=true)]
-    public partial class CreateAccountRequest
+    [System.ServiceModel.MessageContractAttribute(WrapperName="ConvertEuroToDinarResponse", WrapperNamespace="http://service/", IsWrapped=true)]
+    public partial class ConvertEuroToDinarResponse
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BankService.compte account;
+        public double @return;
         
-        public CreateAccountRequest()
+        public ConvertEuroToDinarResponse()
         {
         }
         
-        public CreateAccountRequest(BankService.compte account)
-        {
-            this.account = account;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="CreateAccountResponse", WrapperNamespace="http://service/", IsWrapped=true)]
-    public partial class CreateAccountResponse
-    {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string @return;
-        
-        public CreateAccountResponse()
-        {
-        }
-        
-        public CreateAccountResponse(string @return)
+        public ConvertEuroToDinarResponse(double @return)
         {
             this.@return = @return;
         }
@@ -184,15 +248,20 @@ namespace BankService
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BankService.compte account;
+        public string code;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public float solde;
         
         public UpdateAccountRequest()
         {
         }
         
-        public UpdateAccountRequest(BankService.compte account)
+        public UpdateAccountRequest(string code, float solde)
         {
-            this.account = account;
+            this.code = code;
+            this.solde = solde;
         }
     }
     
@@ -220,38 +289,94 @@ namespace BankService
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="VerserMontant", WrapperNamespace="http://service/", IsWrapped=true)]
-    public partial class VerserMontantRequest
+    [System.ServiceModel.MessageContractAttribute(WrapperName="CreateAccount", WrapperNamespace="http://service/", IsWrapped=true)]
+    public partial class CreateAccountRequest
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BankService.compte account;
+        public string code;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service/", Order=1)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public float montant;
+        public float solde;
         
-        public VerserMontantRequest()
+        public CreateAccountRequest()
         {
         }
         
-        public VerserMontantRequest(BankService.compte account, float montant)
+        public CreateAccountRequest(string code, float solde)
         {
-            this.account = account;
-            this.montant = montant;
+            this.code = code;
+            this.solde = solde;
         }
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="VerserMontantResponse", WrapperNamespace="http://service/", IsWrapped=true)]
-    public partial class VerserMontantResponse
+    [System.ServiceModel.MessageContractAttribute(WrapperName="CreateAccountResponse", WrapperNamespace="http://service/", IsWrapped=true)]
+    public partial class CreateAccountResponse
     {
         
-        public VerserMontantResponse()
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string @return;
+        
+        public CreateAccountResponse()
         {
+        }
+        
+        public CreateAccountResponse(string @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="DecryptString", WrapperNamespace="http://service/", IsWrapped=true)]
+    public partial class DecryptStringRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string encryptedData;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string key;
+        
+        public DecryptStringRequest()
+        {
+        }
+        
+        public DecryptStringRequest(string encryptedData, string key)
+        {
+            this.encryptedData = encryptedData;
+            this.key = key;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="DecryptStringResponse", WrapperNamespace="http://service/", IsWrapped=true)]
+    public partial class DecryptStringResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string @return;
+        
+        public DecryptStringResponse()
+        {
+        }
+        
+        public DecryptStringResponse(string @return)
+        {
+            this.@return = @return;
         }
     }
     
@@ -264,7 +389,7 @@ namespace BankService
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BankService.compte account;
+        public string code;
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service/", Order=1)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
@@ -274,9 +399,9 @@ namespace BankService
         {
         }
         
-        public RetirerMontantRequest(BankService.compte account, float montant)
+        public RetirerMontantRequest(string code, float montant)
         {
-            this.account = account;
+            this.code = code;
             this.montant = montant;
         }
     }
@@ -305,19 +430,19 @@ namespace BankService
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetAccount", WrapperNamespace="http://service/", IsWrapped=true)]
-    public partial class GetAccountRequest
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AccountExists", WrapperNamespace="http://service/", IsWrapped=true)]
+    public partial class AccountExistsRequest
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         public string code;
         
-        public GetAccountRequest()
+        public AccountExistsRequest()
         {
         }
         
-        public GetAccountRequest(string code)
+        public AccountExistsRequest(string code)
         {
             this.code = code;
         }
@@ -326,19 +451,19 @@ namespace BankService
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="GetAccountResponse", WrapperNamespace="http://service/", IsWrapped=true)]
-    public partial class GetAccountResponse
+    [System.ServiceModel.MessageContractAttribute(WrapperName="AccountExistsResponse", WrapperNamespace="http://service/", IsWrapped=true)]
+    public partial class AccountExistsResponse
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public BankService.compte @return;
+        public bool @return;
         
-        public GetAccountResponse()
+        public AccountExistsResponse()
         {
         }
         
-        public GetAccountResponse(BankService.compte @return)
+        public AccountExistsResponse(bool @return)
         {
             this.@return = @return;
         }
@@ -386,23 +511,173 @@ namespace BankService
         }
     }
     
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://service/")]
+    public partial class account
+    {
+        
+        private string codeField;
+        
+        private float soldeField;
+        
+        private bool soldeFieldSpecified;
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=0)]
+        public string code
+        {
+            get
+            {
+                return this.codeField;
+            }
+            set
+            {
+                this.codeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, Order=1)]
+        public float solde
+        {
+            get
+            {
+                return this.soldeField;
+            }
+            set
+            {
+                this.soldeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool soldeSpecified
+        {
+            get
+            {
+                return this.soldeFieldSpecified;
+            }
+            set
+            {
+                this.soldeFieldSpecified = value;
+            }
+        }
+    }
+    
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="ConvertEuroToDinar", WrapperNamespace="http://service/", IsWrapped=true)]
-    public partial class ConvertEuroToDinarRequest
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetAccount", WrapperNamespace="http://service/", IsWrapped=true)]
+    public partial class GetAccountRequest
     {
         
         [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service/", Order=0)]
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public double montant;
+        public string code;
         
-        public ConvertEuroToDinarRequest()
+        public GetAccountRequest()
         {
         }
         
-        public ConvertEuroToDinarRequest(double montant)
+        public GetAccountRequest(string code)
         {
+            this.code = code;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="GetAccountResponse", WrapperNamespace="http://service/", IsWrapped=true)]
+    public partial class GetAccountResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public BankService.account @return;
+        
+        public GetAccountResponse()
+        {
+        }
+        
+        public GetAccountResponse(BankService.account @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="EncryptString", WrapperNamespace="http://service/", IsWrapped=true)]
+    public partial class EncryptStringRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string data;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string key;
+        
+        public EncryptStringRequest()
+        {
+        }
+        
+        public EncryptStringRequest(string data, string key)
+        {
+            this.data = data;
+            this.key = key;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="EncryptStringResponse", WrapperNamespace="http://service/", IsWrapped=true)]
+    public partial class EncryptStringResponse
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string @return;
+        
+        public EncryptStringResponse()
+        {
+        }
+        
+        public EncryptStringResponse(string @return)
+        {
+            this.@return = @return;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="VerserMontant", WrapperNamespace="http://service/", IsWrapped=true)]
+    public partial class VerserMontantRequest
+    {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service/", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string code;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service/", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public float montant;
+        
+        public VerserMontantRequest()
+        {
+        }
+        
+        public VerserMontantRequest(string code, float montant)
+        {
+            this.code = code;
             this.montant = montant;
         }
     }
@@ -410,21 +685,12 @@ namespace BankService
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.Tools.ServiceModel.Svcutil", "2.1.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="ConvertEuroToDinarResponse", WrapperNamespace="http://service/", IsWrapped=true)]
-    public partial class ConvertEuroToDinarResponse
+    [System.ServiceModel.MessageContractAttribute(WrapperName="VerserMontantResponse", WrapperNamespace="http://service/", IsWrapped=true)]
+    public partial class VerserMontantResponse
     {
         
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service/", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public double @return;
-        
-        public ConvertEuroToDinarResponse()
+        public VerserMontantResponse()
         {
-        }
-        
-        public ConvertEuroToDinarResponse(double @return)
-        {
-            this.@return = @return;
         }
     }
     
@@ -479,16 +745,16 @@ namespace BankService
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BankService.CreateAccountResponse> BankService.banque_service.CreateAccountAsync(BankService.CreateAccountRequest request)
+        System.Threading.Tasks.Task<BankService.ConvertEuroToDinarResponse> BankService.banque_service.ConvertEuroToDinarAsync(BankService.ConvertEuroToDinarRequest request)
         {
-            return base.Channel.CreateAccountAsync(request);
+            return base.Channel.ConvertEuroToDinarAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BankService.CreateAccountResponse> CreateAccountAsync(BankService.compte account)
+        public System.Threading.Tasks.Task<BankService.ConvertEuroToDinarResponse> ConvertEuroToDinarAsync(double montant)
         {
-            BankService.CreateAccountRequest inValue = new BankService.CreateAccountRequest();
-            inValue.account = account;
-            return ((BankService.banque_service)(this)).CreateAccountAsync(inValue);
+            BankService.ConvertEuroToDinarRequest inValue = new BankService.ConvertEuroToDinarRequest();
+            inValue.montant = montant;
+            return ((BankService.banque_service)(this)).ConvertEuroToDinarAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -497,25 +763,40 @@ namespace BankService
             return base.Channel.UpdateAccountAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BankService.UpdateAccountResponse> UpdateAccountAsync(BankService.compte account)
+        public System.Threading.Tasks.Task<BankService.UpdateAccountResponse> UpdateAccountAsync(string code, float solde)
         {
             BankService.UpdateAccountRequest inValue = new BankService.UpdateAccountRequest();
-            inValue.account = account;
+            inValue.code = code;
+            inValue.solde = solde;
             return ((BankService.banque_service)(this)).UpdateAccountAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BankService.VerserMontantResponse> BankService.banque_service.VerserMontantAsync(BankService.VerserMontantRequest request)
+        System.Threading.Tasks.Task<BankService.CreateAccountResponse> BankService.banque_service.CreateAccountAsync(BankService.CreateAccountRequest request)
         {
-            return base.Channel.VerserMontantAsync(request);
+            return base.Channel.CreateAccountAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BankService.VerserMontantResponse> VerserMontantAsync(BankService.compte account, float montant)
+        public System.Threading.Tasks.Task<BankService.CreateAccountResponse> CreateAccountAsync(string code, float solde)
         {
-            BankService.VerserMontantRequest inValue = new BankService.VerserMontantRequest();
-            inValue.account = account;
-            inValue.montant = montant;
-            return ((BankService.banque_service)(this)).VerserMontantAsync(inValue);
+            BankService.CreateAccountRequest inValue = new BankService.CreateAccountRequest();
+            inValue.code = code;
+            inValue.solde = solde;
+            return ((BankService.banque_service)(this)).CreateAccountAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BankService.DecryptStringResponse> BankService.banque_service.DecryptStringAsync(BankService.DecryptStringRequest request)
+        {
+            return base.Channel.DecryptStringAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BankService.DecryptStringResponse> DecryptStringAsync(string encryptedData, string key)
+        {
+            BankService.DecryptStringRequest inValue = new BankService.DecryptStringRequest();
+            inValue.encryptedData = encryptedData;
+            inValue.key = key;
+            return ((BankService.banque_service)(this)).DecryptStringAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -524,25 +805,25 @@ namespace BankService
             return base.Channel.RetirerMontantAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BankService.RetirerMontantResponse> RetirerMontantAsync(BankService.compte account, float montant)
+        public System.Threading.Tasks.Task<BankService.RetirerMontantResponse> RetirerMontantAsync(string code, float montant)
         {
             BankService.RetirerMontantRequest inValue = new BankService.RetirerMontantRequest();
-            inValue.account = account;
+            inValue.code = code;
             inValue.montant = montant;
             return ((BankService.banque_service)(this)).RetirerMontantAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BankService.GetAccountResponse> BankService.banque_service.GetAccountAsync(BankService.GetAccountRequest request)
+        System.Threading.Tasks.Task<BankService.AccountExistsResponse> BankService.banque_service.AccountExistsAsync(BankService.AccountExistsRequest request)
         {
-            return base.Channel.GetAccountAsync(request);
+            return base.Channel.AccountExistsAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BankService.GetAccountResponse> GetAccountAsync(string code)
+        public System.Threading.Tasks.Task<BankService.AccountExistsResponse> AccountExistsAsync(string code)
         {
-            BankService.GetAccountRequest inValue = new BankService.GetAccountRequest();
+            BankService.AccountExistsRequest inValue = new BankService.AccountExistsRequest();
             inValue.code = code;
-            return ((BankService.banque_service)(this)).GetAccountAsync(inValue);
+            return ((BankService.banque_service)(this)).AccountExistsAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -559,16 +840,44 @@ namespace BankService
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<BankService.ConvertEuroToDinarResponse> BankService.banque_service.ConvertEuroToDinarAsync(BankService.ConvertEuroToDinarRequest request)
+        System.Threading.Tasks.Task<BankService.GetAccountResponse> BankService.banque_service.GetAccountAsync(BankService.GetAccountRequest request)
         {
-            return base.Channel.ConvertEuroToDinarAsync(request);
+            return base.Channel.GetAccountAsync(request);
         }
         
-        public System.Threading.Tasks.Task<BankService.ConvertEuroToDinarResponse> ConvertEuroToDinarAsync(double montant)
+        public System.Threading.Tasks.Task<BankService.GetAccountResponse> GetAccountAsync(string code)
         {
-            BankService.ConvertEuroToDinarRequest inValue = new BankService.ConvertEuroToDinarRequest();
+            BankService.GetAccountRequest inValue = new BankService.GetAccountRequest();
+            inValue.code = code;
+            return ((BankService.banque_service)(this)).GetAccountAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BankService.EncryptStringResponse> BankService.banque_service.EncryptStringAsync(BankService.EncryptStringRequest request)
+        {
+            return base.Channel.EncryptStringAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BankService.EncryptStringResponse> EncryptStringAsync(string data, string key)
+        {
+            BankService.EncryptStringRequest inValue = new BankService.EncryptStringRequest();
+            inValue.data = data;
+            inValue.key = key;
+            return ((BankService.banque_service)(this)).EncryptStringAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<BankService.VerserMontantResponse> BankService.banque_service.VerserMontantAsync(BankService.VerserMontantRequest request)
+        {
+            return base.Channel.VerserMontantAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<BankService.VerserMontantResponse> VerserMontantAsync(string code, float montant)
+        {
+            BankService.VerserMontantRequest inValue = new BankService.VerserMontantRequest();
+            inValue.code = code;
             inValue.montant = montant;
-            return ((BankService.banque_service)(this)).ConvertEuroToDinarAsync(inValue);
+            return ((BankService.banque_service)(this)).VerserMontantAsync(inValue);
         }
         
         public virtual System.Threading.Tasks.Task OpenAsync()
