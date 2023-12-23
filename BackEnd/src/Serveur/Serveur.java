@@ -1,13 +1,11 @@
+package serveur;
 
-package Serveur;
-
-import Service.BanqueService;
 import javax.xml.ws.Endpoint;
 
-public class Serveur {
-    public static void main(String[] args) 
-    {
-        Endpoint.publish("http://localhost:8090/",new BanqueService());
-        System.out.println("working");
-    }
-}
+import service.banque_service;
+
+public class serveur {
+	 public static void main(String[] args) {
+	Endpoint.publish("http://localhost:8585/", new banque_service());
+		 System.out.println("serveur en cour");
+}}
